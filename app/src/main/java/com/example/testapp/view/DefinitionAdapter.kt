@@ -1,13 +1,17 @@
 package com.example.testapp.view
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testapp.databinding.ItemMeaningBinding
+import kotlinx.coroutines.flow.StateFlow
+import javax.inject.Inject
 
-class DefinitionAdapter(): RecyclerView.Adapter<DefinitionAdapter.DefinitionViewHolder>() {
-    private var items: List<String> = emptyList()
+class DefinitionAdapter @Inject constructor(): RecyclerView.Adapter<DefinitionAdapter.DefinitionViewHolder>() {
+    private val items: MutableList<String> = mutableListOf()
 
     inner class DefinitionViewHolder(private val binding: ItemMeaningBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: String) {
@@ -28,9 +32,10 @@ class DefinitionAdapter(): RecyclerView.Adapter<DefinitionAdapter.DefinitionView
         holder.bind(items[position])
     }
 
-    @BindingAdapter("items")
     fun setItems(newItems: List<String>) {
-        items = newItems
+        items.clear()
+        items.addAll(newItems)
         notifyDataSetChanged()
     }
+
 }

@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">TestApp</string>
     <string name="fetch">Fetch</string>
+    <string name="enter_short_form_text">Enter short form text</string>
+    <string name="fetch_btn_text">Fetch</string>
 </resources>
